@@ -32,7 +32,7 @@ def contact():
             body=f'From: {form.name.data} <{form.email.data}>\n\n{form.message.data}'
         )
         mail.send(msg)
-        flash("Form submitted successfully.", "success")
+        flash("Your form has been submitted.", "success")
         return redirect(url_for('home'))
     return render_template('contact.html', form=form)
 
