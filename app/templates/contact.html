@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Flask</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-link-item">
+              <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
+            </li>
+            <li class="nav-link-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            <li class="nav-link-item">
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+{% endblock %}
+
+{% block main %}
+    <body>
+        <div class="main-container">
+            <h1>Contact Form</h1>
+            <hr/>
+            <p>Fill in this form to contact the site owners.</p>
+            <div class="form-container">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-section">
+                        <div>{{ form.name.label }} <p class="req-text">(Required)</p></div>
+                        <p>Please enter your full name.</p>
+                        {{ form.name(size=45) }}
+                    </div>
+
+                    <div class="form-section">
+                        <div>{{ form.email.label }} <p class="req-text">(Required)</p></div>
+                        <p>Please enter your email address.</p>
+                        {{ form.email(size=45) }}
+                    </div>
+
+                    <div class="form-section">
+                        <div>{{ form.subject.label }} <p class="req-text">(Required)</p></div>
+                        <p>Please enter the subject for your message.</p>
+                        {{ form.subject(size=80) }}
+                    </div>
+                    
+                    <div class="form-section">
+                        <div>{{ form.message.label }} <p class="req-text">(Required)</p></div>
+                        <p>Please enter the message you would like to send.</p>
+                        {{ form.message(size=1500) }}
+                    </div>
+                    
+                    {{ form.submit() }}
+
+                </form>
+            </div>
+        </div>      
+    </body>
+{% endblock %}
